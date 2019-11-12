@@ -4,13 +4,13 @@ app = Flask(__name__)
 
 persons = [
     {
-        "id": 1,
+        "id": 0,
         "name": "Tim",
         "age": 80,
         "Hobbies": "Gardening",
     },
     {
-        "id": 2,
+        "id": 1,
         "name": "Chris",
         "age": 30,
         "hobbies": "martial-arts",
@@ -32,7 +32,6 @@ def person_response(id):
     if int(id) > 1:
         abort(401)
     else:
-        new_list = sorted(persons, key = lambda k : k['name']) # assuming not sorted
-        response = jsonify(new_list[int(id)])
+        response = jsonify(persons[int(id)])
         response.headers['Content-Type'] = 'text/json'
         return response
