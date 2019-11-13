@@ -20,6 +20,11 @@ class BasicTests(unittest.TestCase):
         response = self.app.get('/persons')
         data = json.loads(response.data)
         self.assertEqual(data, persons)
+    
+    def test_person_1(self):
+        response = self.app.get('/person/0')
+        data = json.loads(response.data)
+        self.assertDictEqual(data, persons[0])
 
 if __name__ == "__main__":
     unittest.main()
